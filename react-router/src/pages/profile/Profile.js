@@ -1,4 +1,5 @@
 import React from 'react';
+import WithRouterExample from '../withRouter/WithRouterExample';
 
 const data = {
   woochul: {
@@ -25,6 +26,7 @@ const Profile = ({ match }) => {
         {username}({profile.name})
       </h3>
       <p>{profile.description}</p>
+      <WithRouterExample />
     </div>
   );
 };

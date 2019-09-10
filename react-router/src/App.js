@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
-import Profile from './pages/profile/Profile';
+import Profiles from './pages/profiles/Profiles';
+import History from './pages/history/History';
 
 function App() {
   return (
@@ -15,16 +16,27 @@ function App() {
           <Link to='/about'>About</Link>
         </li>
         <li>
-          <Link to='/profile/woochul'>Woochul</Link>
+          <Link to='/profiles'>Profils</Link>
         </li>
         <li>
-          <Link to='/profile/gildong'>Gildong</Link>
+          <Link to='/history'>History</Link>
         </li>
       </ul>
       <hr />
-      <Route path='/' component={Home} exact={true} />
-      <Route path={['/about', '/info']} component={About} />
-      <Route path='/profile/:username' component={Profile} />
+      <Switch>
+        <Route path='/' component={Home} exact={true} />
+        <Route path={['/about', '/info']} component={About} />
+        <Route path='/profiles' component={Profiles} />
+        <Route path='/history' component={History} />
+        <Route
+          render={({ location }) => (
+            <div>
+              <h2>Page Not Found</h2>
+              <p>{location.pathname}</p>
+            </div>
+          )}
+        />
+      </Switch>
     </div>
   );
 }
